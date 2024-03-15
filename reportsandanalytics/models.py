@@ -5,10 +5,10 @@ from django.db import models
 
 class Report(models.Model):
     REPORT_TYPES = (
-        ('patient_demographics', 'Patient Demographics'),
-        ('appointments', 'Appointments'),
-        ('revenue', 'Revenue'),
-        ('expenses', 'Expenses'),
+        ('Patient_demographics', 'Patient Demographics'),
+        ('Appointments', 'Appointments'),
+        ('Revenue', 'Revenue'),
+        ('Expenses', 'Expenses'),
     )
 
     report_type = models.CharField(max_length=20, choices=REPORT_TYPES)
