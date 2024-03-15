@@ -13,8 +13,10 @@ class AppointmentSerializer(serializers.ModelSerializer):
         model = Appointment
         fields = ['id', 'doctor', 'patient', 'date', 'time', 'description']
 
-    def create(self):
-        doctor = Doctor.objects.get_or_create()
-        patient = Patient.objects.get_or_create()
-        appointment = Appointment.objects.create(doctor=doctor, patient=patient)
+    def create(self, validated_data):
+        doctor_data = validated_data.pop('doctor')  
+        patient_data = validated_data.pop('patient') 
+        doctor, _ = Doctor.objects.get_or_create(**doctor_data) 
+        patient, _ = Patient.objects.get_or_create(**patient_data)
+        appointment = Appointment.objects.create(doctor=doctor, patient=patient, **validated_data)
         return appointment

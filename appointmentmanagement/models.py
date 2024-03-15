@@ -10,5 +10,5 @@ class Appointment(models.Model):
     time = models.TimeField()
     description = models.TextField()
 
-    def __str__(self):
-        return f"Appointment with {self.doctor} on {self.date} at {self.time}"
+    # def __str__(self):
+    #     return f"Appointment with {self.doctor} on {self.date} at {self.time}"
